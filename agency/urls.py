@@ -15,9 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 from islands import views as island_views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("islands/", island_views.get_islands, name="island-list"),
+    path("create/", island_views.create_island, name="create-island"),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL,
+                          document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)

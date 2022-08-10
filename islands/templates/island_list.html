@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,7 +18,7 @@
           <div>
             <h2>{{ island.name }} Photos</h2>
             {% for photo in island.photos.all %}
-            <img src="" alt="{{ island.name }}" />
+            <img src="{{ photo.image.url }}" alt="{{ island.name }}" width="750px"/>
             {% endfor %}
           </div>
           {% endfor %}
